@@ -1,0 +1,44 @@
+#!/usr/bin/env bpftrace
+/*
+ * syscount.bt  Count system calls.
+ *              For Linux, uses bpftrace, eBPF.
+ *
+ * This is a bpftrace version of the bcc tool of the same name.
+ * The bcc versions translates syscall IDs to their names, and this version
+ * currently does not. Syscall IDs can be listed by "ausyscall --dump".
+ *
+ * Copyright 2018 Netflix, Inc.
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ *
+ * 13-Sep-2018  Brendan Gregg   Created this.
+ * 28-Mar-2022  Steve Scrgall   Added interval printing
+ */
+
+BEGIN
+{
+        printf("Counting syscalls... Hit Ctrl-C to end.\n");
+        // ausyscall --dump | awk 'NR > 1 { printf("\t@sysname[%d] = \"%s\";\n", $1, $2); }'
+}
+
+tracepoint:raw_syscalls:sys_enter
+{
+        @syscall[pid, comm, args->id] = count();
+        // @process[comm] = count();
+}
+
+interval:s:5
+{
+        printf("\n--- %s ---\n", strftime("%D %H:%M:%S", nsecs));
+        printf("\nTop 20 syscalls by pid,execname - [PID, execname, syscall#]: count \n");
+        print(@syscall, 20);
+        clear(@syscall);
+
+        // printf("\nTop 20 processes:\n");
+        // print(@process, 20);
+        // clear(@process);
+}
+
+END
+{
+        clear(@syscall);
+}
