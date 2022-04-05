@@ -1,0 +1,186 @@
+Attaching 46 probes...
+Started: 04/01/22 17:31:24
+Collecting futex() statistics ... Press Ctrl-C to stop.
+
+--- 04/01/22 17:31:29 ---
+
+Futex* Timer
+@FutexHist[prometheus, tracepoint:syscalls:sys_exit_futex]:
+[0]                    6 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[1]                    0 |                                                    |
+[2, 4)                 0 |                                                    |
+[4, 8)                 0 |                                                    |
+[8, 16)                0 |                                                    |
+[16, 32)               2 |@@@@@@@@@@@@@@@@@                                   |
+[32, 64)               0 |                                                    |
+[64, 128)              0 |                                                    |
+[128, 256)             0 |                                                    |
+[256, 512)             0 |                                                    |
+[512, 1K)              3 |@@@@@@@@@@@@@@@@@@@@@@@@@@                          |
+
+@FutexHist[in:imjournal, tracepoint:syscalls:sys_exit_futex]:
+[0]                   56 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+
+@FutexHist[grafana-server, tracepoint:syscalls:sys_exit_futex]:
+[0]                   49 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[1]                    0 |                                                    |
+[2, 4)                 0 |                                                    |
+[4, 8)                 0 |                                                    |
+[8, 16)                0 |                                                    |
+[16, 32)               0 |                                                    |
+[32, 64)               0 |                                                    |
+[64, 128)              2 |@@                                                  |
+[128, 256)             6 |@@@@@@                                              |
+[256, 512)            16 |@@@@@@@@@@@@@@@@                                    |
+[512, 1K)              8 |@@@@@@@@                                            |
+
+@FutexHist[rs:main Q:Reg, tracepoint:syscalls:sys_exit_futex]:
+[0]                  104 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[1]                    0 |                                                    |
+[2, 4)                 0 |                                                    |
+[4, 8)                 0 |                                                    |
+[8, 16)                0 |                                                    |
+[16, 32)               0 |                                                    |
+[32, 64)               0 |                                                    |
+[64, 128)              0 |                                                    |
+[128, 256)             0 |                                                    |
+[256, 512)             1 |                                                    |
+[512, 1K)              0 |                                                    |
+[1K, 2K)               1 |                                                    |
+
+@FutexHist[auditd, tracepoint:syscalls:sys_exit_futex]:
+[0]                   85 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[1]                    0 |                                                    |
+[2, 4)                32 |@@@@@@@@@@@@@@@@@@@                                 |
+[4, 8)                 2 |@                                                   |
+[8, 16)                3 |@                                                   |
+[16, 32)               1 |                                                    |
+
+@FutexHist[node_exporter, tracepoint:syscalls:sys_exit_futex]:
+[0]                  193 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[1]                  163 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         |
+[2, 4)                16 |@@@@                                                |
+[4, 8)                 4 |@                                                   |
+[8, 16)                4 |@                                                   |
+[16, 32)               0 |                                                    |
+[32, 64)               0 |                                                    |
+[64, 128)              0 |                                                    |
+[128, 256)             0 |                                                    |
+[256, 512)             0 |                                                    |
+[512, 1K)              0 |                                                    |
+[1K, 2K)               0 |                                                    |
+[2K, 4K)               0 |                                                    |
+[4K, 8K)               3 |                                                    |
+
+@FutexHist[pcm-sensor-serv, tracepoint:syscalls:sys_exit_futex]:
+[0]                 3407 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[1]                  176 |@@                                                  |
+[2, 4)                 0 |                                                    |
+[4, 8)                 0 |                                                    |
+[8, 16)                0 |                                                    |
+[16, 32)               0 |                                                    |
+[32, 64)               0 |                                                    |
+[64, 128)              0 |                                                    |
+[128, 256)             0 |                                                    |
+[256, 512)             1 |                                                    |
+[512, 1K)            251 |@@@                                                 |
+
+
+Kernel Futex counters
+@kprobe_futex_count[rs:main Q:Reg, futex_q_unlock]: 1
+@kprobe_futex_count[auditd, __futex_unqueue]: 1
+@kprobe_futex_count[prometheus, futex_wake_mark]: 6
+@kprobe_futex_count[node_exporter, futex_wait]: 6
+@kprobe_futex_count[node_exporter, futex_q_lock]: 6
+@kprobe_futex_count[node_exporter, __futex_unqueue]: 6
+@kprobe_futex_count[prometheus, futex_wake]: 6
+@kprobe_futex_count[node_exporter, futex_get_value_locked]: 6
+@kprobe_futex_count[node_exporter, futex_setup_timer]: 6
+@kprobe_futex_count[node_exporter, futex_unqueue]: 6
+@kprobe_futex_count[node_exporter, __futex_queue]: 6
+@kprobe_futex_count[prometheus, __futex_queue]: 8
+@kprobe_futex_count[prometheus, futex_get_value_locked]: 8
+@kprobe_futex_count[prometheus, futex_wait]: 8
+@kprobe_futex_count[prometheus, futex_wait_queue]: 8
+@kprobe_futex_count[prometheus, __futex_unqueue]: 8
+@kprobe_futex_count[prometheus, futex_setup_timer]: 8
+@kprobe_futex_count[prometheus, futex_q_lock]: 8
+@kprobe_futex_count[prometheus, futex_wait_setup]: 8
+@kprobe_futex_count[prometheus, futex_unqueue]: 8
+@kprobe_futex_count[node_exporter, do_futex]: 10
+@kprobe_futex_count[node_exporter, __x64_sys_futex]: 10
+@kprobe_futex_count[node_exporter, futex_hash]: 10
+@kprobe_futex_count[prometheus, futex_hash]: 14
+@kprobe_futex_count[prometheus, get_futex_key]: 14
+@kprobe_futex_count[prometheus, __x64_sys_futex]: 14
+@kprobe_futex_count[prometheus, do_futex]: 14
+@kprobe_futex_count[auditd, futex_get_value_locked]: 15
+@kprobe_futex_count[auditd, futex_q_lock]: 19
+@kprobe_futex_count[auditd, __x64_sys_futex]: 21
+@kprobe_futex_count[auditd, futex_setup_timer]: 22
+@kprobe_futex_count[node_exporter, futex_wait_queue]: 24
+@kprobe_futex_count[auditd, futex_unqueue]: 25
+@kprobe_futex_count[auditd, futex_wait]: 27
+@kprobe_futex_count[auditd, futex_wait_queue]: 29
+@kprobe_futex_count[auditd, do_futex]: 30
+@kprobe_futex_count[auditd, futex_wait_setup]: 32
+@kprobe_futex_count[auditd, futex_wake_mark]: 34
+@kprobe_futex_count[rs:main Q:Reg, futex_wait_queue]: 35
+@kprobe_futex_count[in:imjournal, futex_wake_mark]: 35
+@kprobe_futex_count[grafana-server, futex_wake_mark]: 35
+@kprobe_futex_count[grafana-server, futex_wake]: 35
+@kprobe_futex_count[rs:main Q:Reg, __futex_queue]: 35
+@kprobe_futex_count[in:imjournal, __futex_unqueue]: 35
+@kprobe_futex_count[rs:main Q:Reg, futex_unqueue]: 35
+@kprobe_futex_count[in:imjournal, futex_hash]: 36
+@kprobe_futex_count[rs:main Q:Reg, futex_q_lock]: 36
+@kprobe_futex_count[in:imjournal, do_futex]: 36
+@kprobe_futex_count[rs:main Q:Reg, futex_wake]: 36
+@kprobe_futex_count[rs:main Q:Reg, futex_get_value_locked]: 36
+@kprobe_futex_count[rs:main Q:Reg, futex_wait_setup]: 36
+@kprobe_futex_count[rs:main Q:Reg, futex_setup_timer]: 36
+@kprobe_futex_count[in:imjournal, __x64_sys_futex]: 36
+@kprobe_futex_count[rs:main Q:Reg, futex_wait]: 36
+@kprobe_futex_count[in:imjournal, futex_wake]: 36
+@kprobe_futex_count[node_exporter, futex_wake]: 41
+@kprobe_futex_count[node_exporter, futex_wait_setup]: 44
+@kprobe_futex_count[auditd, futex_hash]: 48
+@kprobe_futex_count[grafana-server, futex_get_value_locked]: 50
+@kprobe_futex_count[grafana-server, __futex_unqueue]: 50
+@kprobe_futex_count[grafana-server, futex_wait_setup]: 50
+@kprobe_futex_count[grafana-server, futex_wait_queue]: 50
+@kprobe_futex_count[grafana-server, futex_q_lock]: 50
+@kprobe_futex_count[grafana-server, __futex_queue]: 50
+@kprobe_futex_count[grafana-server, futex_setup_timer]: 50
+@kprobe_futex_count[grafana-server, futex_wait]: 50
+@kprobe_futex_count[grafana-server, futex_unqueue]: 50
+@kprobe_futex_count[node_exporter, futex_wake_mark]: 52
+@kprobe_futex_count[in:imjournal, get_futex_key]: 56
+@kprobe_futex_count[auditd, futex_wake]: 66
+@kprobe_futex_count[rs:main Q:Reg, do_futex]: 72
+@kprobe_futex_count[rs:main Q:Reg, futex_hash]: 72
+@kprobe_futex_count[rs:main Q:Reg, __x64_sys_futex]: 72
+@kprobe_futex_count[grafana-server, get_futex_key]: 85
+@kprobe_futex_count[grafana-server, __x64_sys_futex]: 85
+@kprobe_futex_count[grafana-server, do_futex]: 85
+@kprobe_futex_count[grafana-server, futex_hash]: 85
+@kprobe_futex_count[rs:main Q:Reg, get_futex_key]: 107
+@kprobe_futex_count[auditd, get_futex_key]: 108
+@kprobe_futex_count[node_exporter, get_futex_key]: 151
+@kprobe_futex_count[pcm-sensor-serv, futex_q_unlock]: 729
+@kprobe_futex_count[pcm-sensor-serv, futex_unqueue]: 895
+@kprobe_futex_count[pcm-sensor-serv, __futex_unqueue]: 895
+@kprobe_futex_count[pcm-sensor-serv, futex_wake_mark]: 895
+@kprobe_futex_count[pcm-sensor-serv, __futex_queue]: 896
+@kprobe_futex_count[pcm-sensor-serv, futex_wait_queue]: 896
+@kprobe_futex_count[pcm-sensor-serv, futex_q_lock]: 1625
+@kprobe_futex_count[pcm-sensor-serv, futex_wait]: 1625
+@kprobe_futex_count[pcm-sensor-serv, futex_setup_timer]: 1625
+@kprobe_futex_count[pcm-sensor-serv, futex_get_value_locked]: 1625
+@kprobe_futex_count[pcm-sensor-serv, futex_wait_setup]: 1625
+@kprobe_futex_count[pcm-sensor-serv, futex_wake]: 2273
+@kprobe_futex_count[pcm-sensor-serv, get_futex_key]: 3898
+@kprobe_futex_count[pcm-sensor-serv, __x64_sys_futex]: 3898
+@kprobe_futex_count[pcm-sensor-serv, futex_hash]: 3898
+@kprobe_futex_count[pcm-sensor-serv, do_futex]: 3898
+Ended: 04/01/22 17:31:33
