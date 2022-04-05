@@ -24,6 +24,6 @@ BEGIN
 tracepoint:syscalls:sys_enter_exec*
 {
         // printf("%-10u %-5d ", elapsed / 1e6, pid);
-        printf("%-25s %-10d", strftime("%D %H:%M:%S:%f", nsecs), pid);
+        printf("%-25s %-10d", strftime("%D %H:%M:%S", nsecs), pid);
         join(args->argv);
 }
