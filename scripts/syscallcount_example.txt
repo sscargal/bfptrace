@@ -1,0 +1,27 @@
+# ./syscount.bt
+Attaching 4 probes...
+Counting syscalls... Hit Ctrl-C to end.
+
+--- 04/05/22 12:23:37 ---
+
+Top 20 syscalls by pid,execname - [PID, execname, syscall#]: count
+@syscall[2467, grafana-server, 1]: 10
+@syscall[2467, grafana-server, 0]: 10
+@syscall[2251, rs:main Q:Reg, 202]: 10
+@syscall[2467, grafana-server, 35]: 16
+@syscall[2235, irqbalance, 262]: 20
+@syscall[2235, irqbalance, 3]: 20
+@syscall[108582, bpftrace, 232]: 51
+@syscall[2467, grafana-server, 281]: 77
+@syscall[2235, irqbalance, 257]: 87
+@syscall[2467, grafana-server, 202]: 98
+@syscall[108582, bpftrace, 321]: 120
+@syscall[2251, in:imjournal, 262]: 248
+@syscall[2235, irqbalance, 0]: 377
+@syscall[2468, pcm-sensor-serv, 0]: 480
+@syscall[2468, pcm-sensor-serv, 204]: 520
+@syscall[2468, pcm-sensor-serv, 203]: 1040
+@syscall[2468, pcm-sensor-serv, 230]: 1177
+@syscall[2468, pcm-sensor-serv, 18]: 2960
+@syscall[2468, pcm-sensor-serv, 202]: 3501
+@syscall[2468, pcm-sensor-serv, 17]: 8272
