@@ -1,0 +1,74 @@
+#!/usr/bin/env bpftrace
+
+/*
+ * Provides timing information for futex() calls as well as
+ *   the number of internal kprobe calls.
+ *   Results are displayed every 5 seconds
+ *
+ * Usage:
+ *   Example 1: Capture information from any process that calls futex()
+ *   ./futexsnoop.bt
+ *
+ *   Example 2: Capture information from any process that calls futex() and write output to <file>
+ *   ./futexsnoop.bt -o <file>
+ *
+ *   Example 3: Capture information from a specific PID
+ *   ./futexsnoop.bt -p <pid>
+ *
+ * BSD 3-Clause License
+ * 
+ * Copyright (c) 2022, Steve Scargall
+ * All rights reserved.
+ * 
+ *   WHEN         WHO               WHAT
+ *   02-Apr-2022  Steve Scargall    Created this
+ *
+ * TODO:
+ *   - Get the uaddr (user address) of the futex and aggregate on it to show waiters
+ *   - Display the value of the uaddr to indicate if threads are waiting
+ */
+
+BEGIN
+{
+  printf("Started: %s\n", strftime("%D %H:%M:%S", nsecs));
+  printf("Collecting futex() statistics ... Press Ctrl-C to stop.\n");
+}
+
+tracepoint:syscalls:sys_enter_futex*
+{
+  @start[tid] = nsecs;
+}
+
+// Capture the time spent within the futex* system calls
+// Time is in  milliseconds (ms)
+tracepoint:syscalls:sys_exit_futex*
+/@start[tid]/
+{
+  @FutexHist[comm, probe] = hist((nsecs - @start[tid])/1000000);
+  delete(@start[tid]);
+}
+
+// Count the internal *futex* calls
+kprobe:*futex*
+{
+  @kprobe_futex_count[comm, func] = count();
+}
+// Print the histogram every 5 seconds
+interval:s:5
+{
+  printf("\n--- %s ---\n", strftime("%D %H:%M:%S", nsecs));
+  printf("\nFutex* Timer\n");
+  print(@FutexHist);
+
+  printf("\nKernel Futex counters\n");
+  print(@kprobe_futex_count);
+  clear(@kprobe_futex_count);
+}
+
+END
+{
+  printf("Ended: %s\n", strftime("%D %H:%M:%S", nsecs));
+  // Cleanup before exit
+  clear(@kprobe_futex_count);
+  clear(@kprobe_futex_count);
+}
