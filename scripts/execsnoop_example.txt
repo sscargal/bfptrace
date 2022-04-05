@@ -1,0 +1,33 @@
+# ./execsnoop.bt
+Attaching 3 probes...
+DATE/TIME(ms)             PID        ARGS
+04/05/22 12:21:45         108529    /usr/sbin/sshd -D -R
+04/05/22 12:21:48         108531
+04/05/22 12:21:48         108532
+04/05/22 12:21:49         108534    -bash
+04/05/22 12:21:49         108535    /usr/bin/id -un
+04/05/22 12:21:49         108537    /usr/bin/hostnamectl --transient
+04/05/22 12:21:49         108538    /usr/lib/systemd/systemd-hostnamed
+04/05/22 12:21:49         108540    register-python-argcomplete abrt
+04/05/22 12:21:49         108541    pidof glusterd
+04/05/22 12:21:49         108542    ovs-vsctl --commands
+04/05/22 12:21:49         108545    awk /^--/ { print $0 }
+04/05/22 12:21:49         108546    sed -e s/\(.*\)=ARG/\1=/
+04/05/22 12:21:49         108547    ovs-vsctl --options
+04/05/22 12:21:49         108548    register-python-argcomplete tracer
+04/05/22 12:21:49         108549    /usr/libexec/grepconf.sh -c
+04/05/22 12:21:49         108550    grep -qsi ^COLOR.*none /etc/GREP_COLORS
+04/05/22 12:21:49         108552    /usr/bin/dircolors --sh /etc/DIR_COLORS
+04/05/22 12:21:49         108553    /usr/bin/grep -qi ^COLOR.*none /etc/DIR_COLORS
+04/05/22 12:21:49         108554    /usr/libexec/grepconf.sh -c
+04/05/22 12:21:49         108555    grep -qsi ^COLOR.*none /etc/GREP_COLORS
+04/05/22 12:21:49         108556    /usr/libexec/grepconf.sh -c
+04/05/22 12:21:49         108557    grep -qsi ^COLOR.*none /etc/GREP_COLORS
+04/05/22 12:21:49         108559    sh -c cat /etc/debuginfod/*.urls 2>/dev/null
+04/05/22 12:21:49         108560    tr \n
+04/05/22 12:21:49         108561    cat /etc/debuginfod/elfutils.urls
+04/05/22 12:21:49         108565    flatpak --installations
+04/05/22 12:21:49         108567    /usr/bin/locale
+04/05/22 12:21:49         108568    /usr/bin/sed -r -e s/^[[:blank:]]*([[:upper:]_]+)=([[:print:][:digit:]\._-]+|"[[:print:][:digit:]\._-]+")/export \1=\2/;t;d /etc/locale.conf
+04/05/22 12:21:49         108569    uname -m
+04/05/22 12:21:49         108570    cat /proc/108534/comm
