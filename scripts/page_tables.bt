@@ -1,0 +1,51 @@
+#!/usr/bin/env bpftrace
+/*
+ * page_tables.bt       Reports Kernel Page Table & DAX activity
+ *                      For Linux, uses bpftrace
+ *
+ * USAGE:
+ *      Report all system wide activity
+ *      ./page_tables.bt -o page_tables.out
+ *
+ *      Report activity for a command
+ *      ./page_tables.bt -c "command <args>" -o page_tables.out
+ *
+ *      Report activity for a running PID
+ *      ./page_tables.bt -p PID -o page_tables.out
+ *
+ * Copyright 2022 Steve Scargall
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ *
+ * 06-June-2022 Steve Scargall  Created this.
+ */
+
+BEGIN
+{
+        printf("Tracing Page Table activity... Hit Ctrl-C to end.\n");
+}
+
+
+tracepoint:fs_dax:*
+{
+        @[pid,comm,probe] = count();
+        /* printf("PID: %d, CMD: %s, Probe: %s \n", pid, comm, probe); */
+}
+
+kprobe:*dax*,
+kprobe:*pmt*,
+kprobe:*pte*,
+kprobe:*pdg*,
+kprobe:flush_tlb*,
+kprobe:hugetlb_*
+{
+        @[pid,comm,probe] = count();
+        /* printf("PID: %d, CMD: %s, Probe: %s, Func: %s \n", pid, comm, probe, func); */
+}
+
+END
+{
+        printf("Probe Count Summary\n");
+        print(@);
+        clear(@);
+}
